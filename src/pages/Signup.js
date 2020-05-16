@@ -4,6 +4,7 @@ import ErrorBox from '../components/ErrorBox';
 import LoadingBox from '../components/LoadingBox';
 import SuccessBox from '../components/SuccessBox';
 import { signup } from '../helper/authCalls';
+import moment from 'moment';
 
 function Signup() {
 	const [values, setValues] = useState({
@@ -24,7 +25,7 @@ function Signup() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setValues({ ...values, error: false, loading: true });
-		signup({ name, email, password })
+		signup({ name, email, password, image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon` })
 			.then((data) => {
 				console.log(data);
 
