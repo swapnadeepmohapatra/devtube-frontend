@@ -5,8 +5,6 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: 14px;
-	line-height: 1.5;
 	color: #24292e;
 	background-color: #fff;
 }
@@ -19,12 +17,38 @@ body {
 	height: 100vh;
 }
 
-input.error {
-	border-color: red;
+.signup-form {
+	display: flex;
+	flex-direction: column;
+	min-width: 375px;
 }
 
-.input-feedback {
-	color: red;
-	height: 5px;
-	margin-top: -12px;
+.signup-form label {
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.signup-form input {
+	padding: 10px;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #24292e;
+}
+
+.signup-form input:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.signup-form button {
+	background-color: #8932a7;
+	color: #fff;
+	font-size: large;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
