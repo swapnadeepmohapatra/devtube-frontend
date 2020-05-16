@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import api from './helper/api';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+
 function Routes() {
-	const [data, setData] = useState({});
-
-	useEffect(() => {
-		api.get('/')
-			.then((sdata) => {
-				console.log(sdata.data);
-
-				setData(sdata.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	});
 	return (
-		<div>
-			<h1>{JSON.stringify(data)}</h1>
-		</div>
+		<BrowserRouter>
+			<div>Navabar</div>
+			<div style={{ minHeight: 'calc(100vh - 80px)' }}>
+				<Switch>
+					<Route exact path="/" component={Home} />
+				</Switch>
+			</div>
+		</BrowserRouter>
 	);
 }
 
