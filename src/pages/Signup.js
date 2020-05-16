@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ErrorBox from '../components/ErrorBox';
+import LoadingBox from '../components/LoadingBox';
+import SuccessBox from '../components/SuccessBox';
 
 function Signup() {
 	const [values, setValues] = useState({
@@ -17,21 +20,8 @@ function Signup() {
 		setValues({ ...values, error: false, [name]: event.target.value });
 	};
 
-	const handleSubmit = async (event) => {
-		if (name.trim() !== '') {
-			event.preventDefault();
-			// setLoading(true);
-			// const response = await api.post('/user', {
-			// 	username,
-			// });
-
-			// const { _id } = response.data;
-			// setLoading(false);
-			// history.push(`/user/${_id}`);
-		} else {
-			// event.preventDefault();
-			// alert('Enter your GitHub Username');
-		}
+	const handleSubmit = (event) => {
+		event.preventDefault();
 	};
 	return (
 		<div className="app">
