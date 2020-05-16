@@ -4,6 +4,7 @@ import ErrorBox from '../components/ErrorBox';
 import LoadingBox from '../components/LoadingBox';
 import SuccessBox from '../components/SuccessBox';
 import { signup } from '../helper/authCalls';
+
 function Signup() {
 	const [values, setValues] = useState({
 		name: '',
@@ -54,6 +55,7 @@ function Signup() {
 	return (
 		<div className="app">
 			<form onSubmit={handleSubmit} className="signup-form">
+				<h1>Sign up</h1>
 				{loading ? <LoadingBox /> : <></>}
 				{success ? (
 					<SuccessBox>
@@ -63,7 +65,6 @@ function Signup() {
 					<></>
 				)}
 				{error ? <ErrorBox err={error} /> : <></>}
-				<h1>Sign up</h1>
 				<label>Name</label>
 				<input type="text" value={name} placeholder="Name" onChange={handleChange('name')} />
 				<label>Email</label>
@@ -72,7 +73,10 @@ function Signup() {
 				<input value={password} type="password" placeholder="Password" onChange={handleChange('password')} />
 				<div style={{ textAlign: 'center' }}>
 					<h3>
-						Have an account? <Link to="/login">Login</Link>
+						Have an account?{' '}
+						<Link to="/login" style={{ textDecoration: 'none' }}>
+							Login
+						</Link>
 					</h3>
 				</div>
 				<button>SIGNUP</button>
