@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ErrorBox from '../components/ErrorBox';
 import LoadingBox from '../components/LoadingBox';
 import SuccessBox from '../components/SuccessBox';
-
+import { signup } from '../helper/authCalls';
 function Signup() {
 	const [values, setValues] = useState({
 		name: '',
@@ -22,10 +22,47 @@ function Signup() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setValues({ ...values, error: false, loading: true });
+		signup({ name, email, password })
+			.then((data) => {
+				console.log(data);
+
+				if (data.error) {
+					setValues({
+						...values,
+						error: data.error,
+						success: false,
+						loading: false,
+					});
+				} else {
+					setValues({
+						...values,
+						name: '',
+						email: '',
+						password: '',
+						error: '',
+						success: true,
+						loading: false,
+					});
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
+
 	return (
 		<div className="app">
 			<form onSubmit={handleSubmit} className="signup-form">
+				{loading ? <LoadingBox /> : <></>}
+				{success ? (
+					<SuccessBox>
+						New Account Created. Please <Link to="/login">Login</Link>
+					</SuccessBox>
+				) : (
+					<></>
+				)}
+				{error ? <ErrorBox err={error} /> : <></>}
 				<h1>Sign up</h1>
 				<label>Name</label>
 				<input type="text" value={name} placeholder="Name" onChange={handleChange('name')} />

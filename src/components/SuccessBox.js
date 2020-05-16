@@ -1,9 +1,9 @@
 import React from 'react';
 
-function SuccessBox({ suc }) {
+function SuccessBox({ children }) {
 	return (
 		<div>
-			<div className="successBox">{suc}</div>
+			<div className="successBox">{children}</div>
 		</div>
 	);
 }
