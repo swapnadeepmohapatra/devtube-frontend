@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ErrorBox from '../components/ErrorBox';
 import LoadingBox from '../components/LoadingBox';
-import { signin, authenticate, isAuthenticated, signout } from '../helper/authCalls';
+import { signin, authenticate, isAuthenticated } from '../helper/authCalls';
 
 function Login() {
 	const [values, setValues] = useState({
@@ -51,7 +51,7 @@ function Login() {
 	const performRedirect = () => {
 		if (didRedirect) {
 			if (user) {
-				return <Redirect to="/" />;
+				return window.location.reload(true);
 			}
 		}
 		if (isAuthenticated()) {
