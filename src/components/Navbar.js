@@ -20,9 +20,9 @@ function Navbar() {
 	};
 	return (
 		<div className="nav">
-			<div style={{ display: 'flex', flexDirection: 'row', paddingLeft: 20 }}>
-				<Menu onClick={toggleDrawer('left', true)} style={{ cursor: 'pointer' }} />
-				<Link to="/" style={{ paddingLeft: 20 }}>
+			<div className="nav-left">
+				<Menu onClick={toggleDrawer('left', true)} className="curs-point" />
+				<Link to="/" className="paddingL20">
 					<svg
 						viewBox="0 0 200 60"
 						preserveAspectRatio="xMidYMid meet"
@@ -154,7 +154,7 @@ function Navbar() {
 				<div className="nav-drawer">
 					{isAuthenticated() ? (
 						<List>
-							<Link to="/login" style={{ color: '#000000', textDecoration: 'none' }}>
+							<Link to="/login" className="link-nodec">
 								<ListItem
 									button
 									onClick={() => {
@@ -162,11 +162,7 @@ function Navbar() {
 									}}
 								>
 									<ListItemIcon>
-										<img
-											src={isAuthenticated().user.image}
-											alt=""
-											style={{ height: 32, width: 32, borderRadius: '50%' }}
-										/>
+										<img src={isAuthenticated().user.image} alt="" className="account-img" />
 									</ListItemIcon>
 									<ListItemText primary={isAuthenticated().user.name} />
 								</ListItem>
@@ -185,7 +181,7 @@ function Navbar() {
 								<ListItemText primary={'Logout'} />
 							</ListItem>
 							<Divider />
-							<Link style={{ color: '#000000', textDecoration: 'none' }}>
+							<Link to="/upload" style={{ color: '#000000', textDecoration: 'none' }}>
 								<ListItem
 									button
 									onClick={() => {
@@ -222,18 +218,14 @@ function Navbar() {
 			<div className="nav-links">
 				{isAuthenticated() ? (
 					<Button onClick={toggleDrawer('right', true)}>
-						<img
-							src={isAuthenticated().user.image}
-							alt=""
-							style={{ height: 32, width: 32, borderRadius: '50%' }}
-						/>
+						<img src={isAuthenticated().user.image} alt="" className="account-img" />
 					</Button>
 				) : (
 					<Button>
-						<Link to="/login" style={{ color: '#000000', textDecoration: 'none' }}>
-							<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-								<AccountCircle style={{ height: 32, width: 32 }} />
-								<p style={{ paddingLeft: 10 }}>SIGN IN</p>
+						<Link to="/login" className="link-nodec">
+							<div className="nav-left">
+								<AccountCircle className="account-img" />
+								<p className="padding10">SIGN IN</p>
 							</div>
 						</Link>
 					</Button>
