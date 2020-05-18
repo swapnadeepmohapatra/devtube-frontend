@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
 import Dropzone from 'react-dropzone';
 import '../css/upload.css';
-import { lighten, makeStyles, withStyles } from '@material-ui/core/styles';
+import { lighten, withStyles } from '@material-ui/core/styles';
 import { Publish } from '@material-ui/icons';
-import { LinearProgress } from '@material-ui/core';
+import { LinearProgress, Dialog, DialogTitle, CircularProgress } from '@material-ui/core';
 import { storage } from '../helper/firebase';
 import { isAuthenticated } from '../helper/authCalls';
 import VideoPlayer from 'simple-react-video-thumbnail';
-import { Link } from 'react-router-dom';
 import api from '../helper/api';
+
+function SimpleDialog(props) {
+	const { onClose, open } = props;
+
+	const handleClose = () => {
+		onClose();
+	};
+
+	return (
+		<Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+			<DialogTitle id="simple-dialog-title">
+				<CircularProgress />
+			</DialogTitle>
+		</Dialog>
+	);
+}
 
 const Private = [
 	{ value: 0, label: 'Private' },
@@ -34,7 +49,7 @@ const BorderLinearProgress = withStyles({
 	},
 })(LinearProgress);
 
-function Upload() {
+function Upload({ history }) {
 	const [state, setState] = useState({
 		imageUrl: '',
 		videoUrl: '',
@@ -64,6 +79,16 @@ function Upload() {
 		error,
 	} = state;
 
+	const [open, setOpen] = useState(false);
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = (value) => {
+		setOpen(false);
+	};
+
 	const handleChange = (name) => (event) => {
 		setState({ ...state, [name]: event.target.value });
 	};
@@ -78,6 +103,8 @@ function Upload() {
 			return alert('Upload the video and the thumbnail');
 		}
 
+		handleClickOpen();
+
 		const postData = {
 			writer: isAuthenticated().user._id,
 			title: title,
@@ -90,17 +117,17 @@ function Upload() {
 
 		api.post('saveVideo', postData).then((resp) => {
 			if (resp.error) {
+				setOpen(false);
 				return console.log(resp.error);
 			}
+			setOpen(false);
 			console.log(resp);
-
-			alert('Video Saved');
+			alert('Video Uploaded');
+			history.push('/');
 		});
 	};
 
 	const onDropVideo = (files) => {
-		console.log(files[0]);
-
 		const uploadTask = storage.ref(`/videos/${isAuthenticated().user._id}/${files[0].name}`).put(files[0]);
 		uploadTask.on(
 			'state_changed',
@@ -108,7 +135,7 @@ function Upload() {
 				console.log(snapShot);
 				setState({
 					...state,
-					videoUploadProgress: Math.round((100 * snapShot.bytesTransferred) / snapShot.totalBytes),
+					videoUploadProgress: ((10000 * snapShot.bytesTransferred) / snapShot.totalBytes / 100).toFixed(2),
 				});
 			},
 			(err) => {
@@ -127,8 +154,6 @@ function Upload() {
 	};
 
 	const onDropImage = (files) => {
-		console.log(files[0]);
-
 		const uploadTask = storage.ref(`/thumbnail/${isAuthenticated().user._id}/${files[0].name}`).put(files[0]);
 		uploadTask.on(
 			'state_changed',
@@ -136,9 +161,8 @@ function Upload() {
 				console.log(snapShot);
 				setState({
 					...state,
-					imageUploadProgress: Math.round((100 * snapShot.bytesTransferred) / snapShot.totalBytes),
+					imageUploadProgress: ((10000 * snapShot.bytesTransferred) / snapShot.totalBytes / 100).toFixed(2),
 				});
-				console.log(Math.round((100 * snapShot.bytesTransferred) / snapShot.totalBytes));
 			},
 			(err) => {
 				console.log(err);
@@ -255,7 +279,7 @@ function Upload() {
 					))}
 				</select>
 				<label>Catogory*</label>
-				<select onChange={handleChange('catogory')}>
+				<select onChange={handleChange('category')}>
 					{Catogory.map((item, index) => (
 						<option key={index} value={item.label}>
 							{item.label}
@@ -264,6 +288,7 @@ function Upload() {
 				</select>
 				<button>UPLOAD</button>
 			</form>
+			<SimpleDialog open={open} onClose={handleClose} />
 		</div>
 	);
 }
