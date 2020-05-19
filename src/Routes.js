@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Upload from './pages/Upload';
 import Navbar from './components/Navbar';
+import ViewVideo from './pages/ViewVideo';
 
 function Routes() {
 	return (
@@ -16,6 +17,7 @@ function Routes() {
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/signup" component={Signup} />
 					<Route exact path="/upload" component={Upload} />
+					<Route exact path="/watch/video/:videoId" component={ViewVideo} />
 				</Switch>
 			</div>
 		</BrowserRouter>

@@ -52,3 +52,8 @@ h1 {
 .account-img {
 	margin-right: 10px;
 }
+
+.link-nodec {
+	color: black;
+	text-decoration: none;
+}
