@@ -76,7 +76,6 @@ function Upload({ history }) {
 		videoUpload,
 		imageUploadProgress,
 		videoUploadProgress,
-		error,
 	} = state;
 
 	const [open, setOpen] = useState(false);
@@ -179,7 +178,7 @@ function Upload({ history }) {
 			}
 		);
 	};
-	// https://firebasestorage.googleapis.com/v0/b/mynewproject-fb8ae.appspot.com/o/videos%2F5ec0c86decdcf70ee427fd06%2F5%20reasons%20for%20using%20VScode.mp4?alt=media&token=b6579145-1b66-417c-a88e-8f4b907dda2e
+	
 	return (
 		<div className="video-upload">
 			<h1>Upload New Video Here</h1>

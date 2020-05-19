@@ -17,6 +17,7 @@
     "react-dropzone": "^11.0.1",
     "react-firebase-file-uploader": "^2.4.3",
     "react-hover-video-player": "^6.3.0",
+    "react-player": "^2.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-video-thumbnail": "^0.1.3",
