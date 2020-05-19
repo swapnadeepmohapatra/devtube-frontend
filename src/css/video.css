@@ -1,11 +1,13 @@
 .video-app {
 	display: flex;
 	flex-flow: row wrap;
+	margin-left: 35px;
+	justify-content: center;
 }
 
 .main {
 	margin: 20px;
-	margin-left: 65px;
+	margin-left: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -17,10 +19,15 @@
 	border-radius: 5px;
 }
 
+:focus {
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
 .video-details {
 	width: 500px;
 	margin-left: 50px;
 	margin-right: 50px;
+	margin-top: 10px;
 }
 
 .author-details {
@@ -43,6 +50,7 @@
 .rec-vids {
 	display: flex;
 	margin: 10px;
+	max-width: 400px;
 }
 
 .rec-vids-det h4 {
@@ -57,6 +65,10 @@
 .rec-vids-det {
 	margin-left: 5px;
 	margin-top: 5px;
+}
+
+.more-vids {
+	margin-top: 20px;
 }
 
 @media all and (max-width: 480px) {

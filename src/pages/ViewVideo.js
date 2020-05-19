@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import api from '../helper/api';
 import '../css/video.css';
+import { Link } from 'react-router-dom';
 
 function ViewVideo(props) {
 	const { match } = props;
 
 	const [video, setVideo] = useState({});
+	const [recommendedVideos, setRecommendedVideos] = useState([]);
 
 	useEffect(() => {
 		api.post('getVideoById', { videoId: match.params.videoId })
 			.then((resp) => {
 				console.log(resp.data.video);
 				setVideo(resp.data.video);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, [match]);
+
+	useEffect(() => {
+		api.post('getRecommendedVideos', { videoId: match.params.videoId })
+			.then((resp) => {
+				console.log(resp.data.videos);
+				setRecommendedVideos(resp.data.videos);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -40,6 +53,23 @@ function ViewVideo(props) {
 							</div>
 						)}
 					</div>
+				</div>
+				<div className="more-vids">
+					<h3>More Videos</h3>
+					{recommendedVideos &&
+						recommendedVideos.map((video) => {
+							return (
+								<Link className="link-nodec" to={`/watch/video/${video._id}`} key={video._id}>
+									<div className="rec-vids">
+										<img src={video.thumbnail} style={{ width: '168px' }} />
+										<div className="rec-vids-det">
+											<h4>{video.title}</h4>
+											{video.writer && <p>{video.writer.name}</p>}
+										</div>
+									</div>
+								</Link>
+							);
+						})}
 				</div>
 			</div>
 		</div>
