@@ -172,3 +172,7 @@ button {
 	margin-right: auto;
 	height: 100%;
 }
+
+.video-player__video {
+	height: 238px;
+}

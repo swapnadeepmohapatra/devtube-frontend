@@ -179,13 +179,20 @@ function Upload({ history }) {
 			}
 		);
 	};
-
+	// https://firebasestorage.googleapis.com/v0/b/mynewproject-fb8ae.appspot.com/o/videos%2F5ec0c86decdcf70ee427fd06%2F5%20reasons%20for%20using%20VScode.mp4?alt=media&token=b6579145-1b66-417c-a88e-8f4b907dda2e
 	return (
 		<div className="video-upload">
 			<h1>Upload New Video Here</h1>
 			<main>
 				<div className="upd">
-					{videoUrl !== '' && <VideoPlayer videoUrl={videoUrl} snapshotAt={10} />}
+					{videoUrl !== '' && (
+						<VideoPlayer
+							videoUrl={videoUrl}
+							snapshotAt={10}
+							className="video-center"
+							style={{ maxHeight: '248px' }}
+						/>
+					)}
 					{videoUploadProgress !== 0 && (
 						<div className="progressBar-box">
 							<div className="progressBar">
@@ -267,11 +274,21 @@ function Upload({ history }) {
 			</main>
 			<form className="video-upload-form" onSubmit={handleSubmit}>
 				<label>Title*</label>
-				<input type="text" placeholder="Title" onChange={handleChange('title')} />
+				<input
+					disabled={!imageUpload || !videoUpload}
+					type="text"
+					placeholder="Title"
+					onChange={handleChange('title')}
+				/>
 				<label>Description*</label>
-				<textarea type="text" placeholder="Description" onChange={handleChange('description')} />
+				<textarea
+					disabled={!imageUpload || !videoUpload}
+					type="text"
+					placeholder="Description"
+					onChange={handleChange('description')}
+				/>
 				<label>Privacy*</label>
-				<select onChange={handleChange('privacy')}>
+				<select disabled={!imageUpload || !videoUpload} onChange={handleChange('privacy')}>
 					{Private.map((item, index) => (
 						<option key={index} value={item.value}>
 							{item.label}
@@ -279,14 +296,14 @@ function Upload({ history }) {
 					))}
 				</select>
 				<label>Catogory*</label>
-				<select onChange={handleChange('category')}>
+				<select disabled={!imageUpload || !videoUpload} onChange={handleChange('category')}>
 					{Catogory.map((item, index) => (
 						<option key={index} value={item.label}>
 							{item.label}
 						</option>
 					))}
 				</select>
-				<button>UPLOAD</button>
+				<button disabled={!imageUpload || !videoUpload}>UPLOAD</button>
 			</form>
 			<SimpleDialog open={open} onClose={handleClose} />
 		</div>

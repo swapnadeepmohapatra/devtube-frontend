@@ -3,6 +3,7 @@ import api from '../helper/api';
 import HoverVideoPlayer from 'react-hover-video-player';
 import { CircularProgress } from '@material-ui/core';
 import '../css/home.css';
+import moment from 'moment';
 
 function Home() {
 	const [videos, setVideos] = useState([]);
@@ -37,6 +38,7 @@ function Home() {
 									<h3>{video.title}</h3>
 								</div>
 								<h4>{video.writer.name}</h4>
+								<h4> {moment(video.createdAt).format('MMM Do YYYY')} </h4>
 							</li>
 						);
 					})}
