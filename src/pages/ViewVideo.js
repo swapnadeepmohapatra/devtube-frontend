@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../helper/api';
 import '../css/video.css';
 import { Link } from 'react-router-dom';
+import Comments from '../components/Comments';
 
 function ViewVideo(props) {
 	const { match } = props;
@@ -52,6 +53,9 @@ function ViewVideo(props) {
 								</div>
 							</div>
 						)}
+					</div>
+					<div>
+						<Comments postId={video._id} />
 					</div>
 				</div>
 				<div className="more-vids">
