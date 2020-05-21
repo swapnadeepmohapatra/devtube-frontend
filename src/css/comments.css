@@ -44,3 +44,33 @@ button {
 	align-self: flex-end;
 	margin: 0;
 }
+
+.single-comment {
+	display: flex;
+	margin-left: 10px;
+	align-items: center;
+	padding: 10px 0px;
+}
+
+.single-comment p {
+	margin: 0px;
+	padding: 0px;
+	color: #000000;
+}
+
+.single-comment h4 {
+	margin: 5px 0px;
+	padding: 0px;
+}
+
+.single-comment h5 {
+	margin: 0px 5px;
+	padding: 0px;
+	font-weight: lighter;
+	color: #606060;
+}
+
+.comment-head {
+	display: flex;
+	align-items: center;
+}

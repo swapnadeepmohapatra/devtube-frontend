@@ -56,6 +56,7 @@ function ViewVideo(props) {
 					</div>
 					<div>
 						<Comments postId={video._id} />
+						{}
 					</div>
 				</div>
 				<div className="more-vids">

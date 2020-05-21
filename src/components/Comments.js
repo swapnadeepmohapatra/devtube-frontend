@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/comments.css';
 import api from '../helper/api';
 import { isAuthenticated } from '../helper/authCalls';
+import moment from 'moment';
 
 function Comments({ postId }) {
 	const [comment, setComment] = useState('');
+	const [comments, setComments] = useState([]);
+	const [refresh, setRefresh] = useState(false);
+
+	useEffect(() => {
+		api.post('/getComments', { videoId: postId }).then((data) => {
+			if (data.error) {
+				console.log(data.error);
+			} else {
+				setComments(data.data.comments);
+			}
+		});
+	}, [postId, refresh]);
 
 	const handleChange = (event) => {
 		setComment(event.currentTarget.value);
@@ -26,6 +39,7 @@ function Comments({ postId }) {
 			} else {
 				console.log(data);
 				setComment('');
+				setRefresh(!refresh);
 			}
 		});
 	};
@@ -38,6 +52,23 @@ function Comments({ postId }) {
 				<br />
 				<button>Comment</button>
 			</form>
+			<div>
+				{comments &&
+					comments.reverse().map((comment) => {
+						return (
+							<div className="single-comment">
+								<img src={comment.writer.image} alt="" className="account-img" />
+								<div>
+									<div className="comment-head">
+										<h4>{comment.writer.name}</h4>
+										<h5> {moment(comment.createdAt).format('MMM Do YYYY')} </h5>
+									</div>
+									<p>{comment.content}</p>
+								</div>
+							</div>
+						);
+					})}
+			</div>
 		</div>
 	);
 }
