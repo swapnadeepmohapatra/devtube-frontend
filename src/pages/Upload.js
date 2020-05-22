@@ -178,7 +178,7 @@ function Upload({ history }) {
 			}
 		);
 	};
-	
+
 	return (
 		<div className="video-upload">
 			<h1>Upload New Video Here</h1>
@@ -302,7 +302,7 @@ function Upload({ history }) {
 						</option>
 					))}
 				</select>
-				<button disabled={!imageUpload || !videoUpload}>UPLOAD</button>
+				<button disabled={!imageUpload || !videoUpload}>Upload</button>
 			</form>
 			<SimpleDialog open={open} onClose={handleClose} />
 		</div>

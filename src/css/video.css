@@ -72,6 +72,9 @@
 }
 
 @media all and (max-width: 480px) {
+	.video-app {
+		margin: 0;
+	}
 	.video-video {
 		width: 100%;
 		min-width: 100px;
@@ -86,5 +89,8 @@
 	.main {
 		width: 100%;
 		margin: 20px;
+	}
+	.more-vids h3 {
+		margin-left: 10px;
 	}
 }

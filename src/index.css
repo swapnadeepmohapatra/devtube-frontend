@@ -92,3 +92,23 @@ body {
 	border-radius: 5px;
 	background-color: #e8f5e9;
 }
+
+button {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+input {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+textarea {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+select {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+option {
+	font-family: 'Josefin Sans', sans-serif;
+}

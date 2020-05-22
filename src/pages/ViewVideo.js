@@ -3,12 +3,15 @@ import api from '../helper/api';
 import '../css/video.css';
 import { Link } from 'react-router-dom';
 import Comments from '../components/Comments';
+import Subscribe from '../components/Subscribe';
+import { isAuthenticated } from '../helper/authCalls';
 
 function ViewVideo(props) {
 	const { match } = props;
 
 	const [video, setVideo] = useState({});
 	const [recommendedVideos, setRecommendedVideos] = useState([]);
+	const [subscriberNumber, setSubscriberNumber] = useState(0);
 
 	useEffect(() => {
 		api.post('getVideoById', { videoId: match.params.videoId })
@@ -32,6 +35,21 @@ function ViewVideo(props) {
 			});
 	}, [match]);
 
+	useEffect(() => {
+		if (video.writer) {
+			const subscriberNumberData = { userTo: video.writer._id };
+			api.post('/getSubscriberById', subscriberNumberData).then((response) => {
+				if (response.data.error) {
+					alert('Failed to get subscriber Number');
+				} else {
+					console.log(response.data);
+
+					setSubscriberNumber(response.data.subscriberNumber);
+				}
+			});
+		}
+	}, [video]);
+
 	return (
 		<div className="video-main">
 			<div className="video-app">
@@ -47,16 +65,18 @@ function ViewVideo(props) {
 						{video.writer && (
 							<div className="author-details">
 								<img src={video.writer.image} alt="" className="account-img" />
-								<div>
+								<div style={{ flex: 1 }}>
 									<h4>{video.writer.name}</h4>
-									<p>19.1K subscribers</p>
+									<p>{subscriberNumber} subscribers</p>
+								</div>
+								<div>
+									<Subscribe userTo={video.writer._id} userFrom={isAuthenticated().user._id} />
 								</div>
 							</div>
 						)}
 					</div>
 					<div>
 						<Comments postId={video._id} />
-						{}
 					</div>
 				</div>
 				<div className="more-vids">

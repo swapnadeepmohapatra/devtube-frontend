@@ -33,6 +33,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	min-width: 470px;
+	width: 80%;
 }
 
 .video-upload-form label {
@@ -102,6 +103,7 @@ main {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	margin-top: 10px;
 }
 
 @media all and (max-width: 480px) {

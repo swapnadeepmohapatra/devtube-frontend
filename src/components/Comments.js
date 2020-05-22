@@ -54,9 +54,9 @@ function Comments({ postId }) {
 			</form>
 			<div>
 				{comments &&
-					comments.reverse().map((comment) => {
+					comments.reverse().map((comment, index) => {
 						return (
-							<div className="single-comment">
+							<div className="single-comment" key={index}>
 								<img src={comment.writer.image} alt="" className="account-img" />
 								<div>
 									<div className="comment-head">
