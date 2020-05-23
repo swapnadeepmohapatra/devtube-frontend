@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Comments from '../components/Comments';
 import Subscribe from '../components/Subscribe';
 import { isAuthenticated } from '../helper/authCalls';
+import { AccountCircle } from '@material-ui/icons';
 
 function ViewVideo(props) {
 	const { match } = props;
@@ -70,7 +71,21 @@ function ViewVideo(props) {
 									<p>{subscriberNumber} subscribers</p>
 								</div>
 								<div>
-									<Subscribe userTo={video.writer._id} userFrom={isAuthenticated().user._id} />
+									{isAuthenticated() ? (
+										<Subscribe userTo={video.writer._id} userFrom={isAuthenticated().user._id} />
+									) : (
+										<button className="login-subs">
+											<Link to="/login" className="link-nodec">
+												<div className="nav-left">
+													<AccountCircle className="account-img" />
+													<div>
+														<p className="padding10">Login to</p>
+														<p className="padding10">Subscribe</p>
+													</div>
+												</div>
+											</Link>
+										</button>
+									)}
 								</div>
 							</div>
 						)}

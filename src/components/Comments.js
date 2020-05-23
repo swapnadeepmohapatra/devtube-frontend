@@ -3,6 +3,8 @@ import '../css/comments.css';
 import api from '../helper/api';
 import { isAuthenticated } from '../helper/authCalls';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+import { AccountCircle } from '@material-ui/icons';
 
 function Comments({ postId }) {
 	const [comment, setComment] = useState('');
@@ -47,11 +49,29 @@ function Comments({ postId }) {
 	return (
 		<div>
 			<h2>Comments</h2>
-			<form style={{ display: 'flex' }} onSubmit={handleSubmit}>
-				<input type="text" onChange={handleChange} value={comment} placeholder="write some comments" />
-				<br />
-				<button>Comment</button>
-			</form>
+			{isAuthenticated() ? (
+				<form style={{ display: 'flex' }} onSubmit={handleSubmit}>
+					<input type="text" onChange={handleChange} value={comment} placeholder="write some comments" />
+					<br />
+					<button>Comment</button>
+				</form>
+			) : (
+				<form style={{ display: 'flex' }}>
+					<input type="text" disabled value={comment} placeholder="write some comments" />
+					<br />
+					<button className="login-subs">
+						<Link to="/login" className="link-nodec">
+							<div className="nav-left">
+								<AccountCircle className="account-img" />
+								<div>
+									<p>Login to</p>
+									<p>Comment</p>
+								</div>
+							</div>
+						</Link>
+					</button>
+				</form>
+			)}
 			<div>
 				{comments &&
 					comments.reverse().map((comment, index) => {

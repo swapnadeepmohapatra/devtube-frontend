@@ -21,6 +21,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-width: 400px;
+	width: 80%;
 }
 
 .signup-form label {

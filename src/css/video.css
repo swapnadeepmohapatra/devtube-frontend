@@ -71,6 +71,22 @@
 	margin-top: 20px;
 }
 
+.login-subs {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.login-subs div {
+	padding: 0px 0px;
+	border-radius: 5px;
+	color: #ffffff;
+}
+
+.login-subs p {
+	color: #ffffff;
+	padding-top: 2px;
+}
+
 @media all and (max-width: 480px) {
 	.video-app {
 		margin: 0;
