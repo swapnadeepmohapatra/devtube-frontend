@@ -1,115 +1,115 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 
 body {
-	margin: 0;
-	font-family: 'Josefin Sans', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #24292e;
-	background-color: #fff;
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #24292e;
+  background-color: #fff;
 }
 
 .app {
-	flex-direction: column;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .signup-form {
-	display: flex;
-	flex-direction: column;
-	min-width: 400px;
-	width: 80%;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  width: 80%;
 }
 
 .signup-form label {
-	margin-bottom: 10px;
-	margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .signup-form input {
-	padding: 10px;
-	border-radius: 5px;
-	border-width: 1px;
-	border-color: #c1c1c1;
-	border-style: solid;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #c1c1c1;
+  border-style: solid;
 }
 
 .signup-form input:focus:hover {
-	color: #495057;
-	background-color: #fff;
-	border-color: #2196f3;
-	outline: 0;
+  color: #495057;
+  background-color: #fff;
+  border-color: #2196f3;
+  outline: 0;
 }
 
 .signup-form input:focus {
-	color: #495057;
-	background-color: #fff;
-	border-color: #2196f3;
-	outline: 0;
+  color: #495057;
+  background-color: #fff;
+  border-color: #2196f3;
+  outline: 0;
 }
 
 .signup-form input:hover {
-	border-color: #90caf9;
-	outline: 0;
+  border-color: #90caf9;
+  outline: 0;
 }
 
 .signup-form button {
-	background-color: #8932a7;
-	color: #fff;
-	font-size: medium;
-	padding: 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+  background-color: #8932a7;
+  color: #fff;
+  font-size: medium;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 @media all and (max-width: 480px) {
-	.signup-form {
-		width: 80%;
-		min-width: 100px;
-	}
+  .signup-form {
+    width: 80%;
+    min-width: 100px;
+  }
 }
 
 .loadingBox {
-	padding: 15px 20px;
-	border: 1px solid #90caf9;
-	border-radius: 5px;
-	background-color: #d1ecf1;
+  padding: 15px 20px;
+  border: 1px solid #90caf9;
+  border-radius: 5px;
+  background-color: #d1ecf1;
 }
 
 .errorBox {
-	padding: 15px 20px;
-	border: 1px solid #ef9a9a;
-	border-radius: 5px;
-	background-color: #f8d7da;
+  padding: 15px 20px;
+  border: 1px solid #ef9a9a;
+  border-radius: 5px;
+  background-color: #f8d7da;
 }
 
 .successBox {
-	padding: 15px 20px;
-	border: 1px solid #a5d6a7;
-	border-radius: 5px;
-	background-color: #e8f5e9;
+  padding: 15px 20px;
+  border: 1px solid #a5d6a7;
+  border-radius: 5px;
+  background-color: #e8f5e9;
 }
 
 button {
-	font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 input {
-	font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 textarea {
-	font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 select {
-	font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 option {
-	font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Comments from "../components/Comments";
 import Subscribe from "../components/Subscribe";
 import { isAuthenticated } from "../helper/authCalls";
-import { AccountCircle, ThumbDown, ThumbUp } from "@material-ui/icons";
+import { AccountCircle } from "@material-ui/icons";
 import moment from "moment";
 import Likes from "./Likes";
 
