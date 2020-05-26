@@ -15,16 +15,16 @@ function Likes({ videoId, userId }) {
   }
 
   useEffect(() => {
-    api.post("/getLikes", likeData).then((response) => {
-      console.log("getLikes", response.data);
+    likeData = { videoId: videoId, userId: userId };
 
+    api.post("/getLikes", likeData).then((response) => {
       if (response.data.error) {
         console.log(response.data.error);
       } else {
         setLikes(response.data.likes.length);
 
         response.data.likes.map((like) => {
-          if (like.userId === userId) {
+          if (like.userId === userId && like.videoId === videoId) {
             setLikeAction("liked");
           }
         });
@@ -32,21 +32,19 @@ function Likes({ videoId, userId }) {
     });
 
     api.post("/getDisikes", likeData).then((response) => {
-      console.log("getDislike", response.data);
-
       if (response.data.error) {
         console.log(response.data.error);
       } else {
         setDislikes(response.data.dislike.length);
 
         response.data.dislike.map((dislike) => {
-          if (dislike.userId === userId) {
-            setLikeAction("liked");
+          if (dislike.userId === userId && dislike.videoId === videoId) {
+            setDislikeAction("disliked");
           }
         });
       }
     });
-  }, []);
+  }, [videoId]);
 
   const doLike = () => {
     if (likeAction === null) {
@@ -105,12 +103,14 @@ function Likes({ videoId, userId }) {
   return (
     <span>
       <button
+        disabled={!userId}
         onClick={doDisLike}
         style={{ color: dislikeAction ? "#065FD4" : "#616161" }}
       >
         <ThumbDown /> {dislikes}
       </button>
       <button
+        disabled={!userId}
         onClick={doLike}
         style={{ color: likeAction ? "#065FD4" : "#616161" }}
       >

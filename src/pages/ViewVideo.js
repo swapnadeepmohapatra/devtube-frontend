@@ -75,7 +75,14 @@ function ViewVideo(props) {
                 {video.views} views •{" "}
                 {moment(video.createdAt).format("MMM DD YYYY")}
               </p>
-              <Likes />
+              {isAuthenticated() && video._id ? (
+                <Likes
+                  videoId={video._id}
+                  userId={isAuthenticated().user._id}
+                />
+              ) : (
+                <Likes videoId={video._id} />
+              )}
             </div>
             <div className="line"></div>
             <p>{video.description}</p>
@@ -132,6 +139,7 @@ function ViewVideo(props) {
                     <div className="rec-vids-det">
                       <h4>{video.title}</h4>
                       {video.writer && <p>{video.writer.name}</p>}
+                      <p>{video.views} views</p>
                     </div>
                   </div>
                 </Link>
