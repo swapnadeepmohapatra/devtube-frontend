@@ -272,6 +272,7 @@ function Upload({ history }) {
           )}
           {imageUrl === "" && imageUploadProgress === 0 && (
             <Dropzone
+              disabled={!videoUpload}
               onDrop={onDropImage}
               multiple={false}
               maxSize={800000000}
