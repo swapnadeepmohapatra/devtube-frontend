@@ -20,6 +20,7 @@ import {
   Subscriptions,
 } from "@material-ui/icons";
 import { isAuthenticated, signout } from "../helper/authCalls";
+import logo from "../logo.svg";
 
 function Navbar() {
   const [state, setState] = useState({
@@ -42,8 +43,9 @@ function Navbar() {
     <div className="nav">
       <div className="nav-left">
         <Menu onClick={toggleDrawer("left", true)} className="curs-point" />
-        <Link to="/" className="paddingL20">
-          <svg
+        <Link to="/" className="paddingL20 icon-logo">
+          <img src={logo} alt="" />
+          {/* <svg
             viewBox="0 0 200 60"
             preserveAspectRatio="xMidYMid meet"
             focusable="false"
@@ -140,7 +142,7 @@ function Navbar() {
                 </g>
               </g>
             </g>
-          </svg>
+          </svg> */}
         </Link>
       </div>
       <SwipeableDrawer
