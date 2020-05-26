@@ -151,18 +151,32 @@ function Navbar() {
       >
         <div className="nav-drawer">
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <Home />
-              </ListItemIcon>
-              <ListItemText primary={"Home"} />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <Whatshot />
-              </ListItemIcon>
-              <ListItemText primary={"Trending"} />
-            </ListItem>
+            <Link to="/" className="link-nodec">
+              <ListItem
+                button
+                onClick={() => {
+                  setState({ ...state, left: false });
+                }}
+              >
+                <ListItemIcon>
+                  <Home />
+                </ListItemIcon>
+                <ListItemText primary={"Home"} />
+              </ListItem>
+            </Link>
+            <Link to="/trending" className="link-nodec">
+              <ListItem
+                button
+                onClick={() => {
+                  setState({ ...state, left: false });
+                }}
+              >
+                <ListItemIcon>
+                  <Whatshot />
+                </ListItemIcon>
+                <ListItemText primary={"Trending"} />
+              </ListItem>
+            </Link>
             <ListItem button>
               <ListItemIcon>
                 <Subscriptions />
