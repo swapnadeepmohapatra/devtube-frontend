@@ -37,7 +37,7 @@ function Subscriptions() {
     return (
       <div className="app">
         <h1>Don’t miss new videos</h1>
-        <h3>Sign in to see updates from your favorite YouTube channels</h3>
+        <h3>Sign in to see updates from your favorite DevTube channels</h3>
         <Link to="/login" className="link-nodec">
           <div className="nav-left">
             <AccountCircle className="account-img" />
@@ -108,7 +108,7 @@ function Subscriptions() {
   return (
     <div className="app">
       <h1>Don’t miss new videos</h1>
-      <h3>Subscribe to see updates from your favorite YouTube channels</h3>
+      <h3>Subscribe to see updates from your favorite DevTube channels</h3>
     </div>
   );
 }
