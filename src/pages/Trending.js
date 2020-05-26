@@ -22,7 +22,6 @@ function Trending() {
       <ul className="videos-ul">
         {videos &&
           videos.map((video) => {
-            // return <div>{JSON.stringify(video)}</div>;
             return (
               <li className="list-item" key={video._id}>
                 <Link className="link-nodec" to={`/watch/video/${video._id}`}>
@@ -36,7 +35,18 @@ function Trending() {
                           className="video-list-thumb"
                         />
                       }
-                      loadingOverlay={<CircularProgress />}
+                      loadingOverlay={
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <CircularProgress />
+                        </div>
+                      }
                     />
                   </div>
                   <div className="video-title">
