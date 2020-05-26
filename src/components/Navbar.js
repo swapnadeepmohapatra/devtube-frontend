@@ -164,7 +164,7 @@ function Navbar() {
                 <ListItemText primary={"Home"} />
               </ListItem>
             </Link>
-            <Link to="/trending" className="link-nodec">
+            <Link to="/feed/trending" className="link-nodec">
               <ListItem
                 button
                 onClick={() => {
@@ -177,12 +177,19 @@ function Navbar() {
                 <ListItemText primary={"Trending"} />
               </ListItem>
             </Link>
-            <ListItem button>
-              <ListItemIcon>
-                <Subscriptions />
-              </ListItemIcon>
-              <ListItemText primary={"Subscriptions"} />
-            </ListItem>
+            <Link to="/feed/subscriptions" className="link-nodec">
+              <ListItem
+                button
+                onClick={() => {
+                  setState({ ...state, left: false });
+                }}
+              >
+                <ListItemIcon>
+                  <Subscriptions />
+                </ListItemIcon>
+                <ListItemText primary={"Subscriptions"} />
+              </ListItem>
+            </Link>
             <Divider />
           </List>
         </div>

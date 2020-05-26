@@ -7,6 +7,7 @@ import Upload from "./pages/Upload";
 import Navbar from "./components/Navbar";
 import ViewVideo from "./pages/ViewVideo";
 import Trending from "./pages/Trending";
+import Subscriptions from "./pages/Subscriptions";
 
 function Routes() {
   return (
@@ -15,7 +16,8 @@ function Routes() {
       <div style={{ minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/trending" component={Trending} />
+          <Route exact path="/feed/trending" component={Trending} />
+          <Route exact path="/feed/subscriptions" component={Subscriptions} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/upload" component={Upload} />
