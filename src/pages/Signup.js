@@ -62,6 +62,9 @@ function Signup() {
     <div className="app">
       <form onSubmit={handleSubmit} className="signup-form">
         <h1>Sign up</h1>
+        <span>
+          Trust us with your information. We don't share it and it's encrypted.
+        </span>
         {loading ? <LoadingBox /> : <></>}
         {success ? (
           <SuccessBox>

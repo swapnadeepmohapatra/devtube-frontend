@@ -18,6 +18,10 @@ body {
   text-align: center;
 }
 
+.app label {
+  text-align: left;
+}
+
 .signup-form {
   display: flex;
   flex-direction: column;
