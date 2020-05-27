@@ -11,6 +11,7 @@ import { AccountCircle } from "@material-ui/icons";
 function Subscriptions() {
   const [videos, setVideos] = useState([]);
   const [isSubs, setIsSubs] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   let userData;
 
@@ -29,9 +30,18 @@ function Subscriptions() {
           setIsSubs(true);
           setVideos(resp.data.videos);
         }
+        setLoading(false);
       });
     }
   }, []);
+
+  if (loading) {
+    return (
+      <div className="app">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   if (!isAuthenticated()) {
     return (

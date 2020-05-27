@@ -8,13 +8,23 @@ import { Link } from "react-router-dom";
 
 function Trending() {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api.get("getTrendingVideos").then((resp) => {
       console.log(resp.data.videos);
       setVideos(resp.data.videos);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="app">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div>

@@ -8,13 +8,23 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api.get("getVideos").then((resp) => {
       console.log(resp.data.videos);
       setVideos(resp.data.videos);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="app">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div>
