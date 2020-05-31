@@ -3,18 +3,18 @@
 # Devtube
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7e792efa-ac3b-42f3-96c8-a7390e2bd37a/deploy-status)](https://app.netlify.com/sites/devtube/deploys)
   
-It is an online code dating app that allows Devs to anonymously swipe to like or dislike other profiles based on their GitHub profile. Once two Devs have “matched, ” they can exchange messages.  
+This is video streaming platform. Here the users can watch videos, like or dislike them, put comments on the video, and also can subscribe to channels. Also on hovering over the thumbnail, the video is played so that the user can decide to click on it to watch or not. 
 
-___description___ Researching co-worker is something difficult. Tindev offers you the opportunity to simply accelerate the process by finding out which is the best match. With this you can login with your github ID and you can swipe through differnt devs and if two devs like each other then they match and they can chat over this app. Through this they can get the best co-worker for them and may be the co-founder for a big firm.
+___description___ This is video streaming platform. Here the users can watch videos, like or dislike them, put comments on the video, and also can subscribe to channels. Also on hovering over the thumbnail, the video is played so that the user can decide to click on it to watch or not.
 
-___stack___ `MongoDB` is used for the database, `Node.js` and `Express.js` for the Backend, `React.js` for the frontend and `Socket.io` is used for Real-Time Communication.
+___stack___ `MongoDB` is used for the database, `Firebase` is used to store the video and image assests, `Node.js` and `Express.js` for the Backend and `React.js` for the frontend. `Pure CSS` is used to design the UI with a bit of `Material UI` for the side drawers.
 
-This Repo is the frontend part of Tindev Web App .
-Here is the [**Backend**](https://github.com/swapnadeepmohapatra/tindev-backend) Repo.
+This Repo is the frontend part of DevTube Web App .
+Here is the [**Backend**](https://github.com/swapnadeepmohapatra/devtube-backend) Repo.
 ## HOSTED LINKS
 
-[Backend](https://tindev-swapnadeep.herokuapp.com/)
-[Frontend](https://tindev.swapnadeep.com/)
+[Backend](https://dev-tube.herokuapp.com/)
+[Frontend](https://devtube.swapnadeep.com/)
 
 ## PROJECT STRUCTURE
 	
@@ -22,8 +22,8 @@ Here is the [**Backend**](https://github.com/swapnadeepmohapatra/tindev-backend)
 	|
 	├── src         # Main Source Code
 	| ├── Components     # Reusable components
-	| ├── Helper         # API Calls
-	| ├── Assests        # SVG assests
+	| ├── Helper         # API Calls & Firebase Config
+	| ├── CSS            # CSS Stylesheets
 	| └── Pages          # Pages in Routing
 	|
 	├── index.js      # Main Entry Point  
